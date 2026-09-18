@@ -15,12 +15,13 @@ Environment inspected on 2026-09-19: macOS 26.6.2 (25G83), Safari 26.6.2, Micros
 | Native private-pasteboard round trip / 原生私有剪贴板 | Passed: 4 types, Unicode, decoded HTML title/URL, formula text / 通过 |
 | Automator opens generated workflow / Automator 打开生成工作流 | Passed: rich-link workflow recognized as a no-input Quick Action in any app / 富文本工作流正确识别 |
 | Local installation files / 本地安装文件 | Three HLT workflows copied to Services; original services preserved / 已安装三个 HLT 文件，保留旧操作 |
-| Services invocation and first-run Automation consent / 服务菜单与首次授权 | Pending / 待验证 |
+| Services invocation / 服务菜单 | User-reported success with the three locally installed workflows / 三个本地工作流的服务菜单流程收到成功反馈 |
+| First-run Automation consent on a fresh account / 新账户首次授权 | Not tested / 未测试 |
 | Keyboard shortcuts / 快捷键 | Pending / 待验证 |
 | Safari → rich link → Excel / 富文本粘贴 | User reported A1 pasted successfully; exact click-through still unconfirmed / 用户反馈 A1 粘贴顺利，点击跳转尚未明确确认 |
 | Safari → rich link → TextEdit / 富文本粘贴 | Pending / 待验证 |
 | Plain-text URL fallback / 纯文本 URL | Pending / 待验证 |
-| Safari → formula → Excel writer / 公式写入 | Initial service failed with -1728; fixed API check passed, service retest pending / 首次报错已定位，接口修复通过，服务菜单待复测 |
+| Safari → formula → Excel writer / 公式写入 | Passed in the native API test and user-reported Services retest after the -1728 fix / 接口测试及修复后的服务菜单复测通过，后者依据用户反馈 |
 | Native Excel formula write/readback / 真实 Excel 写入及读回 | Passed in a disposable workbook with simulated foreground condition / 空白临时工作簿通过，测试模拟前台条件 |
 | Chrome / Edge / Word / Notes / WPS | Not tested / 未测试 |
 | Fresh account, Safari-only Mac, browser-downloaded ZIP / 首次安装环境 | Not tested / 未测试 |
@@ -39,6 +40,12 @@ The first manual formula-write attempt failed with “The object you are trying 
 
 The regression model now distinguishes callable property specifiers from their returned values. An opt-in native test creates an unsaved scratch workbook, runs the real formula-writing path, verifies the exact formula and a calculated Unicode title containing quotes and `&`, and closes without saving. This passed. Native foreground activation was unreliable from the test process, so this test simulates only the foreground condition and leaves Services acceptance separate. The production guard is unchanged. This fixes a regression introduced while converting the original AppleScript writer to shared JXA; no reverse engineering or security-setting changes were needed.
 
+### Service retest / 服务菜单复测
+
+On 2026-09-19, the formula service retest initially reported that clipboard text did not start with `=`. The tester then confirmed the flow worked and attributed that attempt to switching away before copying had finished. The guide now asks readers to keep the browser in front until copying completes. The service result is user-reported; the native Excel integration test separately verifies formula and calculated title readback.
+
+2026-09-19 的公式服务复测中，曾提示剪贴板不是以 `=` 开头的公式。随后测试者确认已正常使用，并说明此前在复制完成前切走了应用。指南已补充等待复制完成的步骤。服务菜单结果依据用户反馈；公式及计算后标题的读回另有原生 Excel 测试验证。
+
 ## First manual acceptance / 首次手动验收
 
 Use [Start here](START-HERE.md), the built ZIP, `https://example.com`, and a **new empty** Excel workbook.
@@ -46,7 +53,7 @@ Use [Start here](START-HERE.md), the built ZIP, `https://example.com`, and a **n
 1. Extract the ZIP and install **HLT - Copy Rich Link**. If an older action already uses ⌥⌘K, use Services for this test; do not bind two actions to the same shortcut.
 2. Put Safari in front and use **Safari → Services → HLT - Copy Rich Link**. Accept the expected browser Automation prompt if needed; retry after authorization.
 3. Paste into TextEdit in rich-text mode, an empty Excel cell, and a plain-text editor. Record the displayed title, whether a link exists, and its actual URL. Plain text should be the URL.
-4. Install the two Excel services. Copy a formula from Safari; select an empty cell in the test workbook and run **HLT - Paste Excel Formula**. Check the formula bar, visible title and link target. Other cells should remain unchanged.
+4. Install the two Excel services. Prepare an empty cell in the test workbook and leave edit mode. Copy a formula from Safari and keep Safari in front until copying finishes; return to the cell and run **HLT - Paste Excel Formula**. Check the formula bar, visible title and link target. Other cells should remain unchanged.
 5. Run the writer from another app. It should refuse without switching to Excel or writing anything. Try Excel with no workbook and clipboard text that is not a formula.
 6. Assign shortcuts and repeat the successful menu flow. Record shortcut behavior separately.
 7. Move the installed HLT workflows to Trash and confirm they disappear from Services (reopen the target app if needed), then reinstall.

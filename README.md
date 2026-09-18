@@ -34,7 +34,7 @@ If double-clicking opens an editor, [Start here](docs/START-HERE.md) includes a 
 | HLT - Copy Excel Hyperlink | `=HYPERLINK("https://example.com/","Example Domain")` as clipboard text | ⌃⌥C |
 | HLT - Paste Excel Formula | Writes clipboard formula into Excel’s active cell | ⌃⌥V |
 
-The browser must be in front for copying. The writer requires Microsoft Excel in front with a workbook and an active worksheet cell. It replaces that cell, even if nonempty, and does not save the workbook. Test in a blank workbook; do not rely on Undo for script writes.
+Keep the browser in front until copying finishes, then switch apps. A success notification appears if notifications are enabled. The writer requires Microsoft Excel in front with a workbook and an active worksheet cell. It replaces that cell, even if nonempty, and does not save the workbook. Test in a blank workbook; do not rely on Undo for script writes.
 
 The writer accepts other trusted Excel formulas starting with `=` too. It uses Excel’s scripting API instead of simulating Command + V. The formula producer uses English `HYPERLINK` and commas; locale-specific manual paste has not been validated. The writer does not support WPS.
 
