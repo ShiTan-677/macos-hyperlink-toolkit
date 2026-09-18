@@ -119,8 +119,9 @@ function pasteExcelFormula() {
     }
     const formula = formulaFromText(ObjC.unwrap(
         $.NSPasteboard.generalPasteboard.stringForType($('public.utf8-plain-text'))));
-    // Resolve the cell before writing; getAddress fails for non-cell selections.
-    const cell = excel.activeCell();
+    // Keep the property specifier. Excel can return an unusable reference from
+    // activeCell(); sending that reference back causes Apple event error -1728.
+    const cell = excel.activeCell;
     if (!excel.getAddress(cell)) {
         throw new Error(message('Select a worksheet cell first.', '请先选中工作表中的单元格。'));
     }

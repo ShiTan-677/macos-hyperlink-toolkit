@@ -17,10 +17,11 @@ Environment inspected on 2026-09-19: macOS 26.6.2 (25G83), Safari 26.6.2, Micros
 | Local installation files / 本地安装文件 | Three HLT workflows copied to Services; original services preserved / 已安装三个 HLT 文件，保留旧操作 |
 | Services invocation and first-run Automation consent / 服务菜单与首次授权 | Pending / 待验证 |
 | Keyboard shortcuts / 快捷键 | Pending / 待验证 |
-| Safari → rich link → Excel / 富文本粘贴 | Pending / 待验证 |
+| Safari → rich link → Excel / 富文本粘贴 | User reported A1 pasted successfully; exact click-through still unconfirmed / 用户反馈 A1 粘贴顺利，点击跳转尚未明确确认 |
 | Safari → rich link → TextEdit / 富文本粘贴 | Pending / 待验证 |
 | Plain-text URL fallback / 纯文本 URL | Pending / 待验证 |
-| Safari → formula → Excel writer / 公式写入 | Pending / 待验证 |
+| Safari → formula → Excel writer / 公式写入 | Initial service failed with -1728; fixed API check passed, service retest pending / 首次报错已定位，接口修复通过，服务菜单待复测 |
+| Native Excel formula write/readback / 真实 Excel 写入及读回 | Passed in a disposable workbook with simulated foreground condition / 空白临时工作簿通过，测试模拟前台条件 |
 | Chrome / Edge / Word / Notes / WPS | Not tested / 未测试 |
 | Fresh account, Safari-only Mac, browser-downloaded ZIP / 首次安装环境 | Not tested / 未测试 |
 | Uninstall, reinstall, upgrade / 卸载、重装、升级 | Pending / 待验证 |
@@ -31,6 +32,12 @@ The original three prototypes were reported usable by the author; exact app vers
 The native clipboard test could not access pasteboard services inside the agent sandbox. It passed outside that sandbox using a private pasteboard; no general-clipboard contents were read or replaced by this test. Opening the generated rich-link workflow in Automator confirmed the embedded JavaScript and the “no input / any application” metadata. This is not yet a double-click installation or Services execution result. GUI automation had input timeouts and long app-connection delays, so interactive acceptance is recorded separately.
 
 原生剪贴板检查在代理沙箱内不可用，在沙箱外使用私有剪贴板通过。Automator 已正确显示生成的代码和“没有输入／任何应用程序”配置；这还不等于双击安装、服务执行或实际粘贴验收。图形自动化存在输入超时和应用连接长时间等待，因此交互验收单独记录。
+
+### Excel -1728 regression
+
+The first manual formula-write attempt failed with “The object you are trying to access does not exist”. Read-only native probes on Excel 16.112.4 reproduced -1728 for `excel.getAddress(excel.activeCell())`, while `excel.getAddress(excel.activeCell)` and AppleScript's `get address of active cell` succeeded. Resolving `activeCell()` produces a reference Excel cannot subsequently resolve in this operation. The implementation now retains the property specifier for both address validation and formula writing.
+
+The regression model now distinguishes callable property specifiers from their returned values. An opt-in native test creates an unsaved scratch workbook, runs the real formula-writing path, verifies the exact formula and a calculated Unicode title containing quotes and `&`, and closes without saving. This passed. Native foreground activation was unreliable from the test process, so this test simulates only the foreground condition and leaves Services acceptance separate. The production guard is unchanged. This fixes a regression introduced while converting the original AppleScript writer to shared JXA; no reverse engineering or security-setting changes were needed.
 
 ## First manual acceptance / 首次手动验收
 

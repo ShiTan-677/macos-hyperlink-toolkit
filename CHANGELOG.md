@@ -2,6 +2,7 @@
 
 ## 0.1.0 — Unreleased
 
+- Fix Excel error -1728 by retaining the `activeCell` property specifier instead of resolving `activeCell()` and sending the returned object back to Excel. Add an opt-in native Excel integration check.
 - Copy the current Safari, Google Chrome, or Microsoft Edge page as a rich hyperlink or Excel `HYPERLINK()` formula.
 - Write clipboard formulas into the active cell only while Microsoft Excel is in front.
 - Build three self-contained Automator Quick Actions from shared JXA source.

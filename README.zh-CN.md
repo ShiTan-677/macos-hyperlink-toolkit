@@ -65,6 +65,14 @@ osascript -l JavaScript tests/native-clipboard.js "$PWD/src/common.js"
 
 最初原型包含两个 AppleScript；当前三个功能统一使用 JXA，以共享浏览器处理，并只在实际调用时解析目标应用。
 
+已安装并打开 Microsoft Excel 时，可以选择运行真实接口测试：
+
+```sh
+osascript -l JavaScript tests/excel-integration.js "$PWD/src/common.js"
+```
+
+该测试新建一个空白工作簿，验证公式写入、读回和中文标题计算，随后关闭而不保存；临时替换并恢复剪贴板各格式内容（若其他应用中途改变剪贴板则不覆盖）。为了单独验证 Excel 脚本接口，测试中模拟前台条件，不能替代服务菜单和快捷键验收。CI 不要求安装 Office。
+
 详见[贡献说明](CONTRIBUTING.md)和[发布清单](docs/RELEASING.md)。CI 通过代表逻辑及打包检查通过，不能替代实际安装和 Office 粘贴测试。
 
 ## 相关项目

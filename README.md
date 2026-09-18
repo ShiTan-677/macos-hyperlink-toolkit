@@ -63,6 +63,14 @@ The build creates three standalone JXA scripts, three Automator Quick Actions, a
 
 `src/common.js` holds shared behavior and `src/<action>.js` contains each entry point. The build embeds both into every workflow, so installed actions do not depend on the checkout. Generated files are not edited by hand. The original prototype included two AppleScripts; all three actions now use JXA to share browser handling and resolve applications only when needed.
 
+For an opt-in check against an installed, running Microsoft Excel:
+
+```sh
+osascript -l JavaScript tests/excel-integration.js "$PWD/src/common.js"
+```
+
+This creates and closes one unsaved scratch workbook and temporarily replaces/restores clipboard representations (unless another app changes the clipboard). It verifies native formula write/readback and Unicode title calculation. It simulates the foreground condition to isolate Excel's scripting API; it does not replace Services/keyboard-shortcut acceptance. Office is not required by CI.
+
 See [contributing](CONTRIBUTING.md) and the [release checklist](docs/RELEASING.md). CI verifies logic and packaging; it does not prove GUI installation or Office paste compatibility.
 
 ## Related projects

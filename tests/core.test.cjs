@@ -22,7 +22,10 @@ function runtime(options = {}) {
         writeObjects(items) { state.items = items; return !options.writeFails; },
         stringForType() { return options.clipboard === undefined ? '=1+1' : options.clipboard; }
     }};
-    const cell = {set formula(value) { state.writes.push(value); }};
+    // JXA property specifiers are callable. Excel's resolved activeCell() value
+    // is not interchangeable with the property specifier (native error -1728).
+    function cell() { return {resolvedCell: true}; }
+    Object.defineProperty(cell, 'formula', {set(value) { state.writes.push(value); }});
     const page = options.page || {url: 'https://example.com/', title: 'Example Domain'};
     const tab = {url: () => page.url, title: () => page.title, name: () => page.title};
     function Application(id) {
@@ -30,8 +33,13 @@ function runtime(options = {}) {
         if (options.denied) throw Object.assign(new Error('denied'), {errorNumber: -1743});
         if (id === 'com.microsoft.Excel') return {
             workbooks: options.noWorkbook ? [] : [{}],
-            activeCell() { if (options.noCell) throw new Error('No active cell'); return cell; },
-            getAddress() { if (options.switchAway) state.id = 'com.apple.finder'; return '$A$1'; }
+            activeCell: cell,
+            getAddress(reference) {
+                if (reference !== cell) throw Object.assign(new Error('The object you are trying to access does not exist'), {errorNumber: -1728});
+                if (options.noCell) throw new Error('No active cell');
+                if (options.switchAway) state.id = 'com.apple.finder';
+                return '$A$1';
+            }
         };
         return {windows: options.noWindow ? [] : [{currentTab: tab, activeTab: tab}]};
     }
