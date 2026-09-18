@@ -1,0 +1,7 @@
+.DS_Store
+__pycache__/
+*.pyc
+/temp-files-path/
+/dist/
+/build/
+/artifacts/
