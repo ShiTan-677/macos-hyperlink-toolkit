@@ -5,11 +5,17 @@
 把 Safari、Google Chrome 或 Microsoft Edge 的当前网页复制成带标题的链接。
 只需要富文本链接时，安装 **HLT - Copy Rich Link** 即可。
 
+安装包内的 **START-HERE.html** 可以双击，用浏览器阅读简明安装指南。
+
+> **安装后打开了系统设置？下一步展开“服务”列表里的【通用】。**
+> 在其中找到 **HLT - Copy Rich Link**，勾选它，双击右侧的“无”或已有快捷键，再按 **Option + Command + K（⌥⌘K）**。
+> 安装包不预设快捷键；暂不设置也能从应用的“服务”菜单使用。
+
 ### 安装
 
 1. 解压下载的 ZIP，打开 `workflows` 文件夹。
 2. 双击 `HLT - Copy Rich Link.workflow`，在系统提示中选择“安装”。
-3. 若打开的是 Automator 编辑器，关闭编辑器，使用下方“手动安装”；若打开“快捷指令”，先取消导入，使用“手动安装”。
+3. 安装后如果打开了系统设置，可按上方提示设置快捷键，也可以先关闭设置，用下方的服务菜单测试。这个设置入口由 macOS 的工作流安装流程提供；不同系统版本的表现可能不同。若双击工作流直接打开 Automator 编辑器，关闭编辑器，使用下方“手动安装”；若打开“快捷指令”，先取消导入，使用“手动安装”。
 4. 打开 Safari，访问 `https://example.com`。在屏幕顶部菜单栏选择 **Safari → 服务 → HLT - Copy Rich Link**。
 5. 保持浏览器在前台，等复制完成后再切换应用。启用了通知时，会显示“链接已复制”。首次出现自动化权限提示时，核对它请求控制的是当前浏览器，然后允许；授权后如果没有复制成功，再从服务菜单运行一次。
 6. 到 Excel 的空白单元格或 TextEdit 富文本新文稿中按 **Command + V**。预期显示可点击的 **Example Domain**。纯文本编辑器应显示 `https://example.com/`。
@@ -21,7 +27,15 @@
 
 ### 快捷键
 
-进入 **系统设置 → 键盘 → 键盘快捷键 → 服务**，通常在“通用”分类下找到这些操作：
+完整路径：**系统设置 → 键盘 → 键盘快捷键 → 服务 → 通用**。
+
+1. 在“键盘快捷键”窗口左侧选择 **服务**。
+2. 在右侧列表找到 **通用**，点击左边的小三角展开。这里的“通用”是服务列表内的分组。
+3. 找到以 **HLT -** 开头的操作，确保它已勾选。
+4. 双击该行右侧的“无”或已有快捷键，同时按下想使用的组合键。看到对应符号后，点击“完成”。
+5. 回到浏览器测试复制快捷键；Excel 写入快捷键要在 Excel 中测试。
+
+当前已验证的 macOS 将这些操作归到“通用”；其他版本的分组名称或布局可能不同。
 
 | 操作 | 示例快捷键 |
 |---|---|
@@ -63,17 +77,35 @@
 Copy the current Safari, Google Chrome, or Microsoft Edge page as a titled hyperlink.
 For everyday use, install **HLT - Copy Rich Link** only.
 
+Double-click **START-HERE.html** in the download to read a short setup guide in your browser.
+
+> **Did installation open System Settings? Expand General inside the Services list.**
+> Find **HLT - Copy Rich Link**, enable its checkbox, double-click “none” or the existing shortcut on the right, then press **Option + Command + K (⌥⌘K)**.
+> The package does not assign shortcuts. You can also use the app’s Services menu without setting one.
+
 ### Install and try
 
 1. Extract the ZIP and open `workflows`.
 2. Double-click `HLT - Copy Rich Link.workflow` and choose **Install**.
-3. If it opens in the Automator editor or asks to import into Shortcuts, cancel and use the manual method below.
+3. If installation opens System Settings, use the instructions above or close Settings and test from the Services menu first. This settings entry point belongs to macOS’s workflow installation flow; behavior may vary by version. If opening the workflow goes straight to the Automator editor or asks to import into Shortcuts, cancel and use the manual method below.
 4. In Safari, visit `https://example.com`. Choose **Safari → Services → HLT - Copy Rich Link** from the menu bar.
 5. Keep the browser in front until copying finishes, then switch apps. If notifications are enabled, a “Link copied” notification appears. Allow the expected Automation request to the current browser; run the service again if the first attempt only completed authorization.
 6. Paste with **Command + V** into an empty Excel cell or a new rich-text TextEdit document. Expect a clickable **Example Domain**. A plain-text editor should receive `https://example.com/`.
-7. After the menu action works, assign a shortcut in **System Settings → Keyboard → Keyboard Shortcuts → Services**, usually under **General**.
+7. After the menu action works, follow the shortcut setup below.
 
 **Manual installation:** In Finder, use **Go → Go to Folder**, enter `~/Library/Services`, and copy the desired `.workflow` files there. If needed, create `Services` inside `~/Library` first. Reopen the target app’s Services menu.
+
+### Keyboard shortcuts
+
+Full path: **System Settings → Keyboard → Keyboard Shortcuts → Services → General**.
+
+1. Select **Services** in the Keyboard Shortcuts sidebar.
+2. In the list on the right, expand **General** using its disclosure triangle. General is a group within the Services list.
+3. Find the actions starting with **HLT -** and enable their checkboxes.
+4. Double-click “none” or the existing shortcut on the right, then press the desired key combination. Check that the shortcut appears and click **Done**.
+5. Test copy shortcuts in the browser and the formula-writing shortcut in Excel.
+
+General is the group observed on the tested macOS version; names or layout may differ elsewhere.
 
 | Action | Suggested shortcut |
 |---|---|

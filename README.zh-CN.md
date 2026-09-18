@@ -20,9 +20,12 @@ Safari / Chrome / Edge         Excel / 富文本编辑器          纯文本编�
 ## 安装
 
 1. 正式版本可用后，在仓库 **Releases** 页的 **Assets** 中下载 `macos-hyperlink-toolkit-<版本>.zip`。GitHub 自动提供的 **Source code** 是开发源码，不含生成的工作流。
-2. 解压后打开 `workflows` 文件夹。
+2. 解压后可先双击 **START-HERE.html**，在浏览器里阅读安装指南，再打开 `workflows` 文件夹。
 3. 双击 **HLT - Copy Rich Link.workflow**，选择“安装”。
 4. 按[首次使用指南](docs/START-HERE.md)完成浏览器授权、服务菜单测试和快捷键设置。富文本复制建议使用 **Option + Command + K（⌥⌘K）**。
+
+> **安装后打开了快捷键设置？在“服务”列表里展开【通用】。**
+> 找到并勾选 **HLT - Copy Rich Link**，双击右侧“无”或已有快捷键，再按 **⌥⌘K**。当前安装包不预设快捷键；不设置也可以从“服务”菜单使用。
 
 如果双击打开了编辑器，指南中还有完全通过 Finder 操作的手动安装方法。开发者也可以按下方命令构建相同安装包。
 

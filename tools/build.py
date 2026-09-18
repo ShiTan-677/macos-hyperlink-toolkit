@@ -80,7 +80,8 @@ def build():
         }]})
     for name in ("LICENSE", "VERSION"):
         files[name] = (ROOT / name).read_bytes()
-    files["START-HERE.md"] = (ROOT / "docs/START-HERE.md").read_bytes()
+    for name in ("START-HERE.md", "START-HERE.html"):
+        files[name] = (ROOT / "docs" / name).read_bytes()
     for name, data in files.items():
         path = target / name
         path.parent.mkdir(parents=True, exist_ok=True)

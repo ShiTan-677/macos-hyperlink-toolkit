@@ -18,7 +18,7 @@ class PackageTest(unittest.TestCase):
             stage = Path(temporary)
             for folder in ("src", "docs"):
                 (stage / folder).mkdir()
-            for file in [ROOT / "VERSION", ROOT / "LICENSE", ROOT / "docs/START-HERE.md", *sorted((ROOT / "src").glob("*.js"))]:
+            for file in [ROOT / "VERSION", ROOT / "LICENSE", ROOT / "docs/START-HERE.md", ROOT / "docs/START-HERE.html", *sorted((ROOT / "src").glob("*.js"))]:
                 (stage / file.relative_to(ROOT)).write_bytes(file.read_bytes())
             original_root = builder.ROOT
             try:
@@ -31,7 +31,9 @@ class PackageTest(unittest.TestCase):
                 self.assertEqual((stage / "dist/SHA256SUMS.txt").read_text(), digest + "  " + archive.name + "\n")
                 with zipfile.ZipFile(archive) as package:
                     prefix = archive.stem + "/"
-                    self.assertEqual(len(package.namelist()), 12)
+                    self.assertEqual(len(package.namelist()), 13)
+                    for name in ("START-HERE.md", "START-HERE.html"):
+                        self.assertEqual(package.read(prefix + name), (stage / "docs" / name).read_bytes())
                     for slug, name in builder.TOOLS.items():
                         source = (stage / "src/common.js").read_text() + "\n" + (stage / "src" / (slug + ".js")).read_text()
                         standalone = package.read(prefix + "scripts/" + slug + ".js").decode()

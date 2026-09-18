@@ -20,9 +20,12 @@ Version 0.1.0 is being prepared for its first release. See the [validation recor
 ## Install
 
 1. On the repository’s **Releases** page, download `macos-hyperlink-toolkit-<version>.zip` from **Assets** when available. The GitHub **Source code** archives contain developer sources, not built workflows.
-2. Extract it and open `workflows`.
+2. Extract it. Double-click **START-HERE.html** for a browser-readable setup guide, then open `workflows`.
 3. Double-click **HLT - Copy Rich Link.workflow**, then choose **Install**.
 4. Follow [Start here](docs/START-HERE.md) to authorize the browser, test the service, and assign **Option + Command + K (⌥⌘K)**.
+
+> **Did installation open shortcut settings? Expand General inside the Services list.**
+> Enable **HLT - Copy Rich Link**, double-click “none” or the existing shortcut on the right, then press **⌥⌘K**. The package does not assign shortcuts; the Services menu works without one.
 
 If double-clicking opens an editor, [Start here](docs/START-HERE.md) includes a Finder-only manual installation method. Developers can [build the same package locally](#development).
 

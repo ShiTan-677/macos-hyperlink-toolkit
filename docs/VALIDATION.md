@@ -17,22 +17,24 @@ Environment inspected on 2026-09-19: macOS 26.6.2 (25G83), Safari 26.6.2, Micros
 | Local installation files / 本地安装文件 | Three HLT workflows copied to Services; original services preserved / 已安装三个 HLT 文件，保留旧操作 |
 | Services invocation / 服务菜单 | User-reported success with the three locally installed workflows / 三个本地工作流的服务菜单流程收到成功反馈 |
 | First-run Automation consent on a fresh account / 新账户首次授权 | Not tested / 未测试 |
-| Keyboard shortcuts / 快捷键 | Pending / 待验证 |
-| Safari → rich link → Excel / 富文本粘贴 | User reported A1 pasted successfully; exact click-through still unconfirmed / 用户反馈 A1 粘贴顺利，点击跳转尚未明确确认 |
+| Keyboard shortcut settings / 快捷键设置位置 | User confirmed the installer opens shortcut settings and HLT services appear under General; keyboard invocation remains pending / 用户确认安装后打开快捷键设置，HLT 位于“通用”；按键触发仍待验证 |
+| Safari → rich link → Excel / 富文本粘贴 | User-reported title paste and successful link navigation from the browser-downloaded package / 浏览器下载包的标题粘贴及链接跳转获用户确认 |
 | Safari → rich link → TextEdit / 富文本粘贴 | Pending / 待验证 |
 | Plain-text URL fallback / 纯文本 URL | Pending / 待验证 |
 | Safari → formula → Excel writer / 公式写入 | Passed in the native API test and user-reported Services retest after the -1728 fix / 接口测试及修复后的服务菜单复测通过，后者依据用户反馈 |
 | Native Excel formula write/readback / 真实 Excel 写入及读回 | Passed in a disposable workbook with simulated foreground condition / 空白临时工作簿通过，测试模拟前台条件 |
 | Chrome / Edge / Word / Notes / WPS | Not tested / 未测试 |
-| Fresh account, Safari-only Mac, browser-downloaded ZIP / 首次安装环境 | Not tested / 未测试 |
-| Uninstall, reinstall, upgrade / 卸载、重装、升级 | Pending / 待验证 |
+| Browser-downloaded ZIP installation / 浏览器下载包安装 | User confirmed the rich-link workflow shows the native Install prompt / 用户确认富文本工作流显示系统安装提示 |
+| Fresh account, Safari-only Mac / 首次安装环境 | Not tested / 未测试 |
+| Removal and reinstall / 移除与重装 | User confirmed moving the rich-link workflow out removes its Services entry, then restoring it works / 用户确认富文本工作流移出后菜单消失，放回后恢复 |
+| Upgrade across versions / 跨版本升级 | Not tested / 未测试 |
 | Shortcuts conversion / 快捷指令转换 | Pending / 待验证；not a shipped format |
 
 The original three prototypes were reported usable by the author; exact app versions and all combinations were not recorded. The rich-link shortcut was subsequently corrected to **⌥⌘K**. That report does not certify this new build.
 
-The native clipboard test could not access pasteboard services inside the agent sandbox. It passed outside that sandbox using a private pasteboard; no general-clipboard contents were read or replaced by this test. Opening the generated rich-link workflow in Automator confirmed the embedded JavaScript and the “no input / any application” metadata. This is not yet a double-click installation or Services execution result. GUI automation had input timeouts and long app-connection delays, so interactive acceptance is recorded separately.
+The native clipboard test could not access pasteboard services inside the agent sandbox. It passed outside that sandbox using a private pasteboard; no general-clipboard contents were read or replaced by this test. Opening the generated rich-link workflow in Automator confirmed the embedded JavaScript and the “no input / any application” metadata. That API/editor check alone does not prove installation or Services behavior; subsequent user-reported acceptance is recorded separately below. GUI automation had input timeouts and long app-connection delays.
 
-原生剪贴板检查在代理沙箱内不可用，在沙箱外使用私有剪贴板通过。Automator 已正确显示生成的代码和“没有输入／任何应用程序”配置；这还不等于双击安装、服务执行或实际粘贴验收。图形自动化存在输入超时和应用连接长时间等待，因此交互验收单独记录。
+原生剪贴板检查在代理沙箱内不可用，在沙箱外使用私有剪贴板通过。Automator 已正确显示生成的代码和“没有输入／任何应用程序”配置；这项检查本身不能证明安装、服务执行或实际粘贴通过。后续用户反馈的交互验收另行记录。图形自动化曾存在输入超时和应用连接长时间等待。
 
 ### Excel -1728 regression
 
@@ -45,6 +47,12 @@ The regression model now distinguishes callable property specifiers from their r
 On 2026-09-19, the formula service retest initially reported that clipboard text did not start with `=`. The tester then confirmed the flow worked and attributed that attempt to switching away before copying had finished. The guide now asks readers to keep the browser in front until copying completes. The service result is user-reported; the native Excel integration test separately verifies formula and calculated title readback.
 
 2026-09-19 的公式服务复测中，曾提示剪贴板不是以 `=` 开头的公式。随后测试者确认已正常使用，并说明此前在复制完成前切走了应用。指南已补充等待复制完成的步骤。服务菜单结果依据用户反馈；公式及计算后标题的读回另有原生 Excel 测试验证。
+
+### Downloaded-package acceptance / 下载包验收
+
+On 2026-09-19, the tester confirmed the requested browser-download flow: double-clicking the rich-link workflow showed the native Install prompt; the pasted Example Domain link opened its target; moving the installed rich-link workflow out of Services removed its menu entry, and restoring it worked. The installer also opened shortcut settings, where the service was under General. This result covers the rich-link workflow on the existing account, not a fresh account or all three workflows' separate install/remove cycles. The package contains no preset shortcut or code to open System Settings. The onboarding guide now highlights the Services → General group and includes a browser-readable HTML page.
+
+2026-09-19 的下载包验收中，测试者确认：双击富文本工作流出现系统安装提示，粘贴后的 Example Domain 链接可打开目标网页，移出 Services 后菜单项消失，放回后恢复。安装器还打开了快捷键设置，服务位于“通用”分组。此结果覆盖现有账户下的富文本工作流，不代表新账户或其余工作流各自的安装移除验收。包内没有预设快捷键，也没有打开系统设置的代码。安装指南现已突出“服务 → 通用”的位置，并附有可在浏览器阅读的 HTML 页面。
 
 ## First manual acceptance / 首次手动验收
 

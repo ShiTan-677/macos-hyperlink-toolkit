@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>macOS Hyperlink Toolkit · 安装与快捷键 / Setup</title>
+  <style>
+    :root { color-scheme: light; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #223735; background: #f4f6f3; line-height: 1.65; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 850px; margin: auto; padding: 36px 24px 64px; }
+    header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 12px; padding-bottom: 22px; border-bottom: 1px solid #cbd6cf; }
+    header p { margin: 0; font-weight: 650; }
+    nav { display: flex; gap: 18px; }
+    a { color: #096957; text-underline-offset: 3px; }
+    a:focus-visible, summary:focus-visible { outline: 3px solid #096957; outline-offset: 4px; }
+    section { margin-top: 42px; scroll-margin-top: 24px; }
+    h1 { font-size: clamp(28px, 5vw, 40px); line-height: 1.3; margin: 0 0 16px; letter-spacing: -.025em; }
+    h2 { font-size: 22px; margin: 28px 0 12px; }
+    h3 { font-size: 18px; margin: 0 0 10px; }
+    p { margin: 10px 0; }
+    li { margin: 10px 0; }
+    ol { padding-left: 24px; }
+    code { font-size: .94em; overflow-wrap: anywhere; }
+    kbd { display: inline-block; padding: 1px 7px; border: 1px solid #b5c8bf; border-radius: 5px; background: #fff; color: #163e31; font: inherit; font-weight: 650; white-space: nowrap; }
+    .focus { margin: 24px 0; padding: 22px 24px; background: #e2efe7; border: 1px solid #a9c8b5; border-left: 5px solid #247352; border-radius: 10px; }
+    .focus h2 { margin-top: 0; }
+    .path { display: flex; flex-wrap: wrap; align-items: center; gap: 7px; font-size: 15px; }
+    .path strong { background: #247352; color: white; padding: 3px 10px; border-radius: 5px; }
+    .small { font-size: 14px; color: #4b6059; }
+    .example { margin: 18px 0; padding: 16px 18px; background: white; border: 1px solid #c1d3c8; border-radius: 8px; }
+    .example p { margin: 4px 0; }
+    .example .service { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12px; padding: 12px 0 0 18px; }
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #cbd6cf; vertical-align: top; }
+    th:first-child, td:first-child { padding-left: 0; }
+    details { margin-top: 22px; padding: 16px 20px; background: white; border: 1px solid #d3ddd5; border-radius: 8px; }
+    summary { cursor: pointer; font-weight: 650; }
+    footer { margin-top: 42px; padding-top: 18px; border-top: 1px solid #cbd6cf; }
+    #en { padding-top: 36px; border-top: 1px solid #cbd6cf; }
+    @media (max-width: 480px) { main { padding: 24px 16px 48px; } .focus { padding: 18px 16px; } .example { padding: 12px; } .example .service { padding-left: 0; } }
+  </style>
+</head>
+<body>
+<main>
+  <header>
+    <p>macOS Hyperlink Toolkit</p>
+    <nav aria-label="语言 / Language"><a href="#zh">中文</a><a href="#en" lang="en">English</a></nav>
+  </header>
+
+  <section id="zh" aria-labelledby="zh-title">
+    <h1 id="zh-title">安装好以后，<br>在「通用」里设置快捷键。</h1>
+    <p>把当前网页复制成带标题的可点击链接。日常使用只需安装 <strong>HLT - Copy Rich Link</strong>。</p>
+
+    <h2>1. 双击安装工作流</h2>
+    <p>在解压后的 <code>workflows</code> 文件夹中，双击 <code>HLT - Copy Rich Link.workflow</code>，选择<strong>安装</strong>。</p>
+    <p>安装后如果打开了系统设置，接着按下方操作即可。这是 macOS 的工作流安装流程提供的设置入口；不同系统版本可能有不同表现。</p>
+
+    <div class="focus">
+      <h2>2. 展开「服务」列表里的「通用」</h2>
+      <p class="path"><span>系统设置</span><span aria-hidden="true">→</span><span>键盘</span><span aria-hidden="true">→</span><span>键盘快捷键</span><span aria-hidden="true">→</span><span>服务</span><span aria-hidden="true">→</span><strong>通用</strong></p>
+      <p>如果已经打开“键盘快捷键”，直接选择左侧的<strong>服务</strong>，再点击右侧<strong>通用</strong>左边的小三角。</p>
+      <div class="example">
+        <p class="small">位置示意（非系统截图）</p>
+        <p><strong>▾ 通用</strong></p>
+        <div class="service"><span>☑ HLT - Copy Rich Link</span><span>无 → <kbd>⌥⌘K</kbd></span></div>
+      </div>
+      <p>勾选 <strong>HLT - Copy Rich Link</strong>，双击右侧的“无”或已有快捷键，同时按下 <strong>Option + Command + K</strong>。看到 <kbd>⌥⌘K</kbd> 后，点击<strong>完成</strong>。</p>
+      <p class="small">“通用”是服务列表内的分组。安装包不预设快捷键，可以选择其他组合；与旧服务冲突时，先清除旧绑定。其他 macOS 版本的分组名称或布局可能不同。</p>
+    </div>
+
+    <h2>3. 复制一个链接试试</h2>
+    <ol>
+      <li>在 Safari 打开 <a href="https://example.com">example.com</a>，按刚设置的快捷键。暂不设置快捷键也可以从菜单栏的 <strong>Safari → 服务 → HLT - Copy Rich Link</strong> 运行。</li>
+      <li>首次出现控制浏览器的自动化授权时，允许后重试。<strong>保持浏览器在前台，等复制完成再切换应用。</strong>启用了通知时，会看到“链接已复制”。</li>
+      <li>到空白 Excel 单元格或 TextEdit 富文本新文稿中按 <kbd>⌘V</kbd>，检查是否显示可点击的 <strong>Example Domain</strong>。</li>
+    </ol>
+
+    <details>
+      <summary>安装或快捷键没有按预期工作</summary>
+      <p>若双击打开的是 Automator 编辑器，关闭编辑器；若提示导入“快捷指令”，取消导入。在 Finder 中选择<strong>前往 → 前往文件夹</strong>，输入 <code>~/Library/Services</code>，将工作流复制进去。文件夹不存在时，先在 <code>~/Library</code> 中新建 <code>Services</code>。</p>
+      <p>先从浏览器的“服务”菜单测试。如果菜单能运行而快捷键无效，检查是否已勾选、组合键是否与其他操作冲突。快捷键是可选的，未设置时也能正常使用服务菜单。</p>
+    </details>
+
+    <h2>可选：Excel 公式工具</h2>
+    <p>需要显式写入公式时，再安装其余两个工作流。它们的快捷键也在同一个<strong>通用</strong>分组中。</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th scope="col">服务名称</th><th scope="col">用途</th><th scope="col">示例快捷键</th></tr></thead>
+      <tbody>
+        <tr><td>HLT - Copy Excel Hyperlink</td><td>从浏览器复制超链接公式</td><td><kbd>⌃⌥C</kbd></td></tr>
+        <tr><td>HLT - Paste Excel Formula</td><td>在 Excel 中写入活动单元格</td><td><kbd>⌃⌥V</kbd></td></tr>
+      </tbody>
+    </table></div>
+    <p class="small">公式写入会覆盖活动单元格，请先在空白测试工作簿里使用。复制公式完成后，再切回 Excel 运行写入服务。</p>
+    <p><a href="https://github.com/ShiTan-677/macos-hyperlink-toolkit/blob/main/docs/START-HERE.md">完整使用、权限与卸载说明（在线）</a> · 安装包也附有 <code>START-HERE.md</code> 文字版。</p>
+  </section>
+
+  <section id="en" lang="en" aria-labelledby="en-title">
+    <h1 id="en-title">Installed? Find your shortcut<br>under General.</h1>
+    <p>Copy the current webpage as a clickable title. Start with <strong>HLT - Copy Rich Link</strong>; the two Excel formula tools are optional.</p>
+    <h2>1. Install the workflow</h2>
+    <p>In the extracted <code>workflows</code> folder, double-click <code>HLT - Copy Rich Link.workflow</code> and choose <strong>Install</strong>.</p>
+    <p>If installation opens System Settings, continue below. This settings entry point belongs to macOS’s workflow installation flow; behavior can vary by version.</p>
+    <div class="focus">
+      <h2>2. Expand General inside Services</h2>
+      <p><strong>System Settings → Keyboard → Keyboard Shortcuts → Services → General</strong></p>
+      <ol>
+        <li>Select <strong>Services</strong> in the Keyboard Shortcuts sidebar.</li>
+        <li>Expand <strong>General</strong> using the triangle in the list on the right.</li>
+        <li>Enable <strong>HLT - Copy Rich Link</strong>. Double-click “none” or the existing shortcut on the right, then press <strong>Option + Command + K</strong>.</li>
+        <li>Check that <kbd>⌥⌘K</kbd> appears, then click <strong>Done</strong>.</li>
+      </ol>
+      <p class="small">General is a group within Services. No shortcut is assigned by the package. Choose a different combination or clear an older binding if there is a conflict. Group names and layout may vary on other macOS versions.</p>
+    </div>
+    <h2>3. Try a link</h2>
+    <ol>
+      <li>Open <a href="https://example.com">example.com</a> in Safari. Press your shortcut, or choose <strong>Safari → Services → HLT - Copy Rich Link</strong> without setting a shortcut.</li>
+      <li>Allow the expected browser Automation request and retry if needed. <strong>Keep Safari in front until copying finishes.</strong> A success notification appears if notifications are enabled.</li>
+      <li>Paste with <kbd>⌘V</kbd> into an empty Excel cell or a new rich-text TextEdit document. Check for a clickable <strong>Example Domain</strong>.</li>
+    </ol>
+    <details>
+      <summary>If installation or the shortcut does not work</summary>
+      <p>If the workflow opens in the Automator editor or asks to import into Shortcuts, cancel. In Finder, choose <strong>Go → Go to Folder</strong>, enter <code>~/Library/Services</code>, and copy the workflow there. Create <code>Services</code> inside <code>~/Library</code> if needed.</p>
+      <p>Test the browser’s Services menu first. If that works but the shortcut does not, check the service’s checkbox and shortcut conflicts. Keyboard shortcuts are optional.</p>
+    </details>
+    <h2>Optional Excel formula tools</h2>
+    <p>Install the other two workflows to copy a hyperlink formula from the browser and write it into Excel. Their shortcut entries are also under <strong>General</strong>.</p>
+    <p>Suggested keys: <kbd>⌃⌥C</kbd> for <strong>HLT - Copy Excel Hyperlink</strong> and <kbd>⌃⌥V</kbd> for <strong>HLT - Paste Excel Formula</strong>. The writer replaces the active cell; use an empty test workbook first. Wait for copying to finish before switching to Excel.</p>
+    <p><a href="https://github.com/ShiTan-677/macos-hyperlink-toolkit/blob/main/docs/START-HERE.md">Full setup, permissions and uninstall guide (online)</a> · A text copy is included as <code>START-HERE.md</code>.</p>
+  </section>
+  <footer class="small">MIT · HAN Fang · <a href="https://github.com/ShiTan-677/macos-hyperlink-toolkit">Source / 源码</a></footer>
+</main>
+</body>
+</html>
