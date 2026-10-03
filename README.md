@@ -6,30 +6,33 @@ Copy a webpage as a **clickable title**, or as an Excel `HYPERLINK()` formula, u
 
 ```text
 Safari / Chrome / Edge       Excel / rich-text editor       Plain-text editor
-        ⌥⌘K          →         Example Domain          or   https://example.com/
+   Copy Rich Link    →         Example Domain          or   https://example.com/
                               (clickable title)
 ```
 
 **Start with Copy Rich Link.** The two Excel formula tools are optional.
 No browser extension, Homebrew, Node.js, or Python is needed to run the downloaded workflows.
 
-## Status
+**[Download 0.1.0 ZIP](https://github.com/ShiTan-677/macos-hyperlink-toolkit/releases/download/v0.1.0/macos-hyperlink-toolkit-0.1.0.zip)** · [Release notes and checksum](https://github.com/ShiTan-677/macos-hyperlink-toolkit/releases/tag/v0.1.0) · [中文安装说明](README.zh-CN.md#安装)
 
-Version 0.1.0 is being prepared for its first release. See the [validation record](docs/VALIDATION.md) for what has actually been tested and the remaining installation checks. Compatibility is not assumed across apps or macOS versions.
+0.1.0 is a **public preview**. Safari → Excel has passed local Services acceptance; other combinations and macOS versions still need testing. See [compatibility](#compatibility-and-privacy) and the [validation record](docs/VALIDATION.md).
 
 ## Install
 
-1. On the repository’s **Releases** page, download `macos-hyperlink-toolkit-<version>.zip` from **Assets** when available. The GitHub **Source code** archives contain developer sources, not built workflows.
+1. Download the **ZIP linked above**. The GitHub **Source code** archives contain developer sources, not built workflows.
 2. Extract it. Double-click **START-HERE.html** for a browser-readable setup guide, then open `workflows`.
 3. Double-click **HLT - Copy Rich Link.workflow**, then choose **Install**.
-4. Follow [Start here](docs/START-HERE.md) to authorize the browser, test the service, and assign **Option + Command + K (⌥⌘K)**.
+4. In Safari, open `https://example.com`, choose **Safari → Services → HLT - Copy Rich Link**, and wait for copying to finish. Allow the expected browser Automation prompt and retry if needed. Paste into an empty Excel cell with **⌘V**: it should show a clickable **Example Domain**.
+5. Once the menu works, optionally assign **Option + Command + K (⌥⌘K)** using [Start here](docs/START-HERE.md#keyboard-shortcuts).
 
-> **Did installation open shortcut settings? Expand General inside the Services list.**
-> Enable **HLT - Copy Rich Link**, double-click “none” or the existing shortcut on the right, then press **⌥⌘K**. The package does not assign shortcuts; the Services menu works without one.
+> **Did installation open shortcut settings? You can close it and try the Services menu first.**
+> To add a shortcut later: **System Settings → Keyboard → Keyboard Shortcuts → Services → General**. Expand **General**, enable **HLT - Copy Rich Link**, and double-click its shortcut field. The package does not assign shortcuts.
 
 If double-clicking opens an editor, [Start here](docs/START-HERE.md) includes a Finder-only manual installation method. Developers can [build the same package locally](#development).
 
 ## Three actions
+
+**HLT** stands for **Hyperlink Toolkit**. The prefix groups these services together in macOS menus; it is not another app to install.
 
 | Action | Result | Shortcut example |
 |---|---|---|
@@ -43,13 +46,24 @@ The writer accepts other trusted Excel formulas starting with `=` too. It uses E
 
 ## Compatibility and privacy
 
-- Source browsers: Safari, Google Chrome, Microsoft Edge. Only the browser being used needs to be installed.
+| Combination | Current evidence |
+|---|---|
+| Safari → rich link → Microsoft Excel | Title paste and link navigation confirmed through Services |
+| Safari → Excel formula → Excel writer | Services acceptance and native Excel API check passed |
+| Chrome / Edge as source browsers | Implemented and covered by isolated tests; live use not yet tested |
+| TextEdit / Word / Notes / WPS as rich-link receivers | Not yet tested; the receiving app chooses the clipboard format |
+| WPS as formula-writer destination | Not supported; the writer requires Microsoft Excel |
+
+Interactive results were recorded on macOS **26.6.2**, Safari **26.6.2**, and Excel **16.112.4**. This is a tested environment, not a minimum-version claim. Fresh-account permissions and keyboard invocation remain unverified. Only the source browser being used needs to be installed.
+
 - Rich-link copying offers `public.html`, `public.utf8-plain-text`, `public.url`, and `public.url-name` in one clipboard item. The receiving app chooses a format; rich hyperlinks are not guaranteed in every app.
 - Runtime scripts read the current tab’s title/URL, use the clipboard, and optionally write an Excel cell. They contain no network requests, analytics, or background service. macOS clipboard synchronization and third-party clipboard managers remain subject to your own settings.
 - macOS Automation consent is required for the target browser or Excel. These scripts do not use System Events, simulated keys, browser page JavaScript, or Accessibility APIs.
 - Notifications are optional. Copying remains successful when notifications cannot be displayed.
 
 See [installation, permissions, troubleshooting, upgrades and uninstall](docs/START-HERE.md) and [tested combinations](docs/VALIDATION.md).
+
+Trying it for the first time? The [first-use checklist](docs/FIRST-USE-CHECK.md) takes you from download to removal and explains what to report.
 
 ## Development
 

@@ -1,7 +1,9 @@
 # Changelog
 
-## 0.1.0 — Unreleased
+## 0.1.0 — 2026-10-03 (public preview)
 
+- Publish the install ZIP as a public preview, with direct download links and an explicit tested/untested compatibility table.
+- Explain the HLT prefix and align both setup guides around installation, a Services-menu test, and optional shortcuts.
 - Add an offline HTML setup guide and make the Services → General shortcut instructions visible immediately after installation.
 - Clarify that copying must finish before switching apps, with troubleshooting for a clipboard that does not contain formula text. Record the successful local Services retest.
 - Fix Excel error -1728 by retaining the `activeCell` property specifier instead of resolving `activeCell()` and sending the returned object back to Excel. Add an opt-in native Excel integration check.

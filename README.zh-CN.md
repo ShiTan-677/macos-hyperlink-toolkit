@@ -6,36 +6,39 @@
 
 ```text
 Safari / Chrome / Edge         Excel / 富文本编辑器          纯文本编辑器
-        ⌥⌘K            →          Example Domain       或   https://example.com/
+     Copy Rich Link    →          Example Domain       或   https://example.com/
                                  （可点击标题）
 ```
 
 **建议从 Copy Rich Link 开始。**另外两个是可选的 Excel 公式工具。
 运行下载好的工作流不需要安装浏览器扩展、Homebrew、Node.js 或 Python。
 
-## 当前状态
+**[下载 0.1.0 安装包](https://github.com/ShiTan-677/macos-hyperlink-toolkit/releases/download/v0.1.0/macos-hyperlink-toolkit-0.1.0.zip)** · [版本说明与校验文件](https://github.com/ShiTan-677/macos-hyperlink-toolkit/releases/tag/v0.1.0)
 
-0.1.0 正在准备首次发布。[验证记录](docs/VALIDATION.md)列出了已经完成的测试和仍需验收的安装步骤。不同软件、macOS 版本的兼容性以实测为准。
+0.1.0 是**公开预览版**。Safari → Excel 已通过本机服务菜单验收；其他组合和 macOS 版本仍待实测，详见下方[兼容性说明](#兼容性与隐私)和[验证记录](docs/VALIDATION.md)。
 
 ## 安装
 
-1. 正式版本可用后，在仓库 **Releases** 页的 **Assets** 中下载 `macos-hyperlink-toolkit-<版本>.zip`。GitHub 自动提供的 **Source code** 是开发源码，不含生成的工作流。
+1. 点击上方的**下载安装包**。GitHub 自动提供的 **Source code** 是开发源码，不含生成的工作流。
 2. 解压后可先双击 **START-HERE.html**，在浏览器里阅读安装指南，再打开 `workflows` 文件夹。
 3. 双击 **HLT - Copy Rich Link.workflow**，选择“安装”。
-4. 按[首次使用指南](docs/START-HERE.md)完成浏览器授权、服务菜单测试和快捷键设置。富文本复制建议使用 **Option + Command + K（⌥⌘K）**。
+4. 在 Safari 打开 `https://example.com`，从菜单栏选择 **Safari → 服务 → HLT - Copy Rich Link**，等复制完成。首次出现控制浏览器的自动化提示时允许，必要时重试；再到 Excel 的空白单元格按 **⌘V**，应显示可点击的 **Example Domain**。
+5. 菜单运行成功后，可以按[首次使用指南](docs/START-HERE.md#快捷键)设置 **Option + Command + K（⌥⌘K）**。快捷键是可选的。
 
-> **安装后打开了快捷键设置？在“服务”列表里展开【通用】。**
-> 找到并勾选 **HLT - Copy Rich Link**，双击右侧“无”或已有快捷键，再按 **⌥⌘K**。当前安装包不预设快捷键；不设置也可以从“服务”菜单使用。
+> **安装后打开了快捷键设置？可以先关闭，用“服务”菜单试一次。**
+> 之后设置快捷键的完整路径是：**系统设置 → 键盘 → 键盘快捷键 → 服务 → 通用**。展开【通用】，勾选 **HLT - Copy Rich Link**，再双击右侧快捷键栏。安装包不会自动分配快捷键。
 
 如果双击打开了编辑器，指南中还有完全通过 Finder 操作的手动安装方法。开发者也可以按下方命令构建相同安装包。
 
 ## 三个操作
 
+**HLT** 是 **Hyperlink Toolkit（超链接工具箱）**的缩写，用来让这几个服务在菜单中排列在一起，不是需要额外安装的软件。
+
 | 操作名称 | 功能 | 示例快捷键 |
 |---|---|---|
-| **HLT - Copy Rich Link** | 富文本软件获得标题链接，纯文本软件获得 URL | **⌥⌘K** |
-| HLT - Copy Excel Hyperlink | 将 `=HYPERLINK("URL","标题")` 文本放入剪贴板 | ⌃⌥C |
-| HLT - Paste Excel Formula | 将剪贴板公式直接写入 Excel 活动单元格 | ⌃⌥V |
+| **HLT - Copy Rich Link** | **复制网页为标题链接**：富文本软件获得标题链接，纯文本软件获得 URL | **⌥⌘K** |
+| HLT - Copy Excel Hyperlink | **复制网页为 Excel 公式**：将 `=HYPERLINK("URL","标题")` 文本放入剪贴板 | ⌃⌥C |
+| HLT - Paste Excel Formula | **将公式写入 Excel**：将剪贴板公式写入活动单元格 | ⌃⌥V |
 
 复制时请将浏览器切到前台，并等复制完成后再切换应用。启用了通知时，会显示复制成功提示。公式写入要求 Microsoft Excel 位于前台，并且存在工作簿和活动工作表单元格。它会覆盖该单元格的原内容，不会保存工作簿；请先在空白测试工作簿里使用，不要依赖撤销恢复脚本写入。
 
@@ -43,13 +46,24 @@ Safari / Chrome / Edge         Excel / 富文本编辑器          纯文本编�
 
 ## 兼容性与隐私
 
-- 来源浏览器：Safari、Google Chrome、Microsoft Edge。只需安装实际使用的浏览器。
+| 使用组合 | 当前证据 |
+|---|---|
+| Safari → 标题链接 → Microsoft Excel | 服务菜单流程中的标题粘贴和链接跳转已获确认 |
+| Safari → 超链接公式 → Excel 写入 | 服务菜单验收及原生 Excel 接口测试通过 |
+| Chrome / Edge 作为来源浏览器 | 已实现，有隔离逻辑测试；尚未实测 |
+| TextEdit / Word / 备忘录 / WPS 接收标题链接 | 尚未实测，采用何种剪贴板格式取决于接收软件 |
+| 将公式直接写入 WPS | 不支持，写入操作要求 Microsoft Excel |
+
+交互验收环境为 macOS **26.6.2**、Safari **26.6.2**、Excel **16.112.4**，这不代表最低版本要求。新账户首次授权、快捷键触发仍待验证。只需安装实际使用的来源浏览器。
+
 - 富文本复制在同一个剪贴板项目中提供 HTML、纯文本 URL、URL 和标题四种表示。接收软件决定采用哪种，因此不是所有软件都会粘贴出富文本链接。
 - 运行脚本只读取当前标签页的标题和 URL、操作剪贴板，以及按需写入 Excel 单元格。脚本不发送网络请求，没有统计或后台常驻服务。系统通用剪贴板、第三方剪贴板工具仍遵循各自设置。
 - 首次使用需要 macOS 自动化授权。这些脚本不使用 System Events、模拟按键、网页 JavaScript 或辅助功能 API。
 - 通知是可选的；通知无法显示不会导致复制失败。
 
 详见[安装、权限、排错、升级与卸载](docs/START-HERE.md)和[验证记录](docs/VALIDATION.md)。
+
+第一次使用时，可以照着[首次使用检查清单](docs/FIRST-USE-CHECK.md)完成下载、试用和卸载，并反馈卡住的步骤。
 
 ## 开发
 

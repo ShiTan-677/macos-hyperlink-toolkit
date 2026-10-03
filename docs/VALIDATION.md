@@ -3,6 +3,14 @@
 Evidence levels are separate: isolated tests, native API tests, and interactive acceptance.
 逻辑测试、原生接口测试、真实安装验收分别记录；不能相互替代。
 
+## Public preview preparation / 公开预览版准备
+
+On 2026-10-03, the 0.1.0 package was rebuilt with the revised bilingual guides. The runtime sources and workflow metadata are unchanged from `f29e1be`, the implementation covered by the interactive results below. All 10 isolated tests, the reproducible-package test, compilation of all 3 scripts, and the native private-pasteboard test passed again. Local documentation links and the install → Services → optional-shortcut order were checked in both languages.
+
+The [independent first-use checklist](FIRST-USE-CHECK.md) and [demo recording plan](demo/DIRECTION.md) are ready. A new tester's feedback and actual demo footage remain pending; neither is counted as a completed check. The revised HTML guide's text and structure were checked, but a new offline visual walkthrough has not been performed.
+
+2026-10-03 已重新构建含新版中英指南的 0.1.0 安装包。运行源码和工作流元数据与下方已验收的 `f29e1be` 相同；10 项隔离测试、可重复打包、三个脚本的原生编译及私有剪贴板测试再次通过。文档本地链接和“安装 → 服务菜单试用 → 可选快捷键”的中英步骤顺序已检查。独立新用户反馈、真实演示素材和新版 HTML 的离线视觉走查仍待完成。
+
 ## Current build
 
 Environment inspected on 2026-09-19: macOS 26.6.2 (25G83), Safari 26.6.2, Microsoft Excel 16.112.4. Results below refer to the current JXA implementation, not the original prototypes.

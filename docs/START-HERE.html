@@ -50,15 +50,24 @@
   </header>
 
   <section id="zh" aria-labelledby="zh-title">
-    <h1 id="zh-title">安装好以后，<br>在「通用」里设置快捷键。</h1>
+    <h1 id="zh-title">把网页标题，<br>变成可点击的链接。</h1>
     <p>把当前网页复制成带标题的可点击链接。日常使用只需安装 <strong>HLT - Copy Rich Link</strong>。</p>
+    <p class="small"><strong>HLT = Hyperlink Toolkit（超链接工具箱）</strong>，是服务名称的统一前缀。Copy Rich Link 的意思是“复制网页为标题链接”。</p>
 
     <h2>1. 双击安装工作流</h2>
     <p>在解压后的 <code>workflows</code> 文件夹中，双击 <code>HLT - Copy Rich Link.workflow</code>，选择<strong>安装</strong>。</p>
-    <p>安装后如果打开了系统设置，接着按下方操作即可。这是 macOS 的工作流安装流程提供的设置入口；不同系统版本可能有不同表现。</p>
+    <p>安装后如果打开了系统设置，可以先关闭，用下方的服务菜单试一次。之后设置快捷键时，需要展开<strong>服务 → 通用</strong>。这个设置入口由 macOS 的工作流安装流程提供；不同系统版本可能有不同表现。</p>
+
+    <h2>2. 从服务菜单复制一个链接</h2>
+    <ol>
+      <li>在 Safari 打开 <a href="https://example.com">example.com</a>，从屏幕顶部菜单栏选择 <strong>Safari → 服务 → HLT - Copy Rich Link</strong>。</li>
+      <li>首次出现控制浏览器的自动化授权时，允许后重试。<strong>保持浏览器在前台，等复制完成再切换应用。</strong>启用了通知时，会看到“链接已复制”。</li>
+      <li>到 Excel 的空白单元格中按 <kbd>⌘V</kbd>，检查是否显示可点击的 <strong>Example Domain</strong>。</li>
+    </ol>
+    <p class="small">Safari → Excel 是当前经过真实验收的组合。Chrome、Edge 和其他富文本接收软件仍待实测。菜单运行成功后，就可以开始使用；快捷键是可选的。</p>
 
     <div class="focus">
-      <h2>2. 展开「服务」列表里的「通用」</h2>
+      <h2>3. 可选：在「服务 → 通用」设置快捷键</h2>
       <p class="path"><span>系统设置</span><span aria-hidden="true">→</span><span>键盘</span><span aria-hidden="true">→</span><span>键盘快捷键</span><span aria-hidden="true">→</span><span>服务</span><span aria-hidden="true">→</span><strong>通用</strong></p>
       <p>如果已经打开“键盘快捷键”，直接选择左侧的<strong>服务</strong>，再点击右侧<strong>通用</strong>左边的小三角。</p>
       <div class="example">
@@ -70,17 +79,15 @@
       <p class="small">“通用”是服务列表内的分组。安装包不预设快捷键，可以选择其他组合；与旧服务冲突时，先清除旧绑定。其他 macOS 版本的分组名称或布局可能不同。</p>
     </div>
 
-    <h2>3. 复制一个链接试试</h2>
-    <ol>
-      <li>在 Safari 打开 <a href="https://example.com">example.com</a>，按刚设置的快捷键。暂不设置快捷键也可以从菜单栏的 <strong>Safari → 服务 → HLT - Copy Rich Link</strong> 运行。</li>
-      <li>首次出现控制浏览器的自动化授权时，允许后重试。<strong>保持浏览器在前台，等复制完成再切换应用。</strong>启用了通知时，会看到“链接已复制”。</li>
-      <li>到空白 Excel 单元格或 TextEdit 富文本新文稿中按 <kbd>⌘V</kbd>，检查是否显示可点击的 <strong>Example Domain</strong>。</li>
-    </ol>
-
     <details>
       <summary>安装或快捷键没有按预期工作</summary>
       <p>若双击打开的是 Automator 编辑器，关闭编辑器；若提示导入“快捷指令”，取消导入。在 Finder 中选择<strong>前往 → 前往文件夹</strong>，输入 <code>~/Library/Services</code>，将工作流复制进去。文件夹不存在时，先在 <code>~/Library</code> 中新建 <code>Services</code>。</p>
       <p>先从浏览器的“服务”菜单测试。如果菜单能运行而快捷键无效，检查是否已勾选、组合键是否与其他操作冲突。快捷键是可选的，未设置时也能正常使用服务菜单。</p>
+    </details>
+
+    <details>
+      <summary>更新或卸载</summary>
+      <p>在 Finder 中选择<strong>前往 → 前往文件夹</strong>，输入 <code>~/Library/Services</code>。卸载时，将自己安装的 <code>HLT - … .workflow</code> 移到废纸篓。更新时先备份改过的工作流，再用新版本同名文件替换，并重新检查快捷键。</p>
     </details>
 
     <h2>可选：Excel 公式工具</h2>
@@ -97,13 +104,21 @@
   </section>
 
   <section id="en" lang="en" aria-labelledby="en-title">
-    <h1 id="en-title">Installed? Find your shortcut<br>under General.</h1>
+    <h1 id="en-title">Turn a webpage title<br>into a clickable link.</h1>
     <p>Copy the current webpage as a clickable title. Start with <strong>HLT - Copy Rich Link</strong>; the two Excel formula tools are optional.</p>
+    <p class="small"><strong>HLT = Hyperlink Toolkit</strong>, the shared prefix for these services.</p>
     <h2>1. Install the workflow</h2>
     <p>In the extracted <code>workflows</code> folder, double-click <code>HLT - Copy Rich Link.workflow</code> and choose <strong>Install</strong>.</p>
-    <p>If installation opens System Settings, continue below. This settings entry point belongs to macOS’s workflow installation flow; behavior can vary by version.</p>
+    <p>If installation opens System Settings, close it and try the Services menu below first. When ready to add a shortcut, expand <strong>Services → General</strong>. This settings entry point belongs to macOS’s workflow installation flow; behavior can vary by version.</p>
+    <h2>2. Copy a link from the Services menu</h2>
+    <ol>
+      <li>Open <a href="https://example.com">example.com</a> in Safari. Choose <strong>Safari → Services → HLT - Copy Rich Link</strong> from the menu bar.</li>
+      <li>Allow the expected browser Automation request and retry if needed. <strong>Keep Safari in front until copying finishes.</strong> A success notification appears if notifications are enabled.</li>
+      <li>Paste with <kbd>⌘V</kbd> into an empty Excel cell. Check for a clickable <strong>Example Domain</strong>.</li>
+    </ol>
+    <p class="small">Safari → Excel has passed interactive acceptance. Chrome, Edge, and other rich-text receivers still need testing. Once the menu works, you can start using it; shortcuts are optional.</p>
     <div class="focus">
-      <h2>2. Expand General inside Services</h2>
+      <h2>3. Optional: add a shortcut under Services → General</h2>
       <p><strong>System Settings → Keyboard → Keyboard Shortcuts → Services → General</strong></p>
       <ol>
         <li>Select <strong>Services</strong> in the Keyboard Shortcuts sidebar.</li>
@@ -113,16 +128,14 @@
       </ol>
       <p class="small">General is a group within Services. No shortcut is assigned by the package. Choose a different combination or clear an older binding if there is a conflict. Group names and layout may vary on other macOS versions.</p>
     </div>
-    <h2>3. Try a link</h2>
-    <ol>
-      <li>Open <a href="https://example.com">example.com</a> in Safari. Press your shortcut, or choose <strong>Safari → Services → HLT - Copy Rich Link</strong> without setting a shortcut.</li>
-      <li>Allow the expected browser Automation request and retry if needed. <strong>Keep Safari in front until copying finishes.</strong> A success notification appears if notifications are enabled.</li>
-      <li>Paste with <kbd>⌘V</kbd> into an empty Excel cell or a new rich-text TextEdit document. Check for a clickable <strong>Example Domain</strong>.</li>
-    </ol>
     <details>
       <summary>If installation or the shortcut does not work</summary>
       <p>If the workflow opens in the Automator editor or asks to import into Shortcuts, cancel. In Finder, choose <strong>Go → Go to Folder</strong>, enter <code>~/Library/Services</code>, and copy the workflow there. Create <code>Services</code> inside <code>~/Library</code> if needed.</p>
       <p>Test the browser’s Services menu first. If that works but the shortcut does not, check the service’s checkbox and shortcut conflicts. Keyboard shortcuts are optional.</p>
+    </details>
+    <details>
+      <summary>Update or remove</summary>
+      <p>In Finder, choose <strong>Go → Go to Folder</strong> and enter <code>~/Library/Services</code>. To uninstall, move the installed <code>HLT - … .workflow</code> files to Trash. To update, back up any customized workflows, replace same-named files with the new release, and recheck shortcuts.</p>
     </details>
     <h2>Optional Excel formula tools</h2>
     <p>Install the other two workflows to copy a hyperlink formula from the browser and write it into Excel. Their shortcut entries are also under <strong>General</strong>.</p>

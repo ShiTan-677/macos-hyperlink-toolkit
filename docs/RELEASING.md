@@ -5,12 +5,14 @@
 3. Extract the built ZIP into a new directory. Install only the desired workflows, authorize from their actual host, run from Services, and verify keyboard shortcuts separately.
 4. Test Safari → rich hyperlink → Excel/TextEdit, and Safari → formula → Excel writer in an empty workbook. Include Unicode and quoted titles. Check plain-text URL fallback and failure with Excel not in front.
 5. Test removal, then reinstall. Check updates against an existing installation and shortcut conflicts with older service names.
-6. For a public release, also test a ZIP downloaded through a browser so quarantine/first-run behavior is included. Prefer a fresh macOS account or another Mac for first-run permissions and the Safari-only case.
+6. Test a ZIP downloaded through a browser so quarantine/first-run behavior is included. Use the [first-use checklist](FIRST-USE-CHECK.md) for independent feedback. Record existing-account and fresh-account results separately.
 7. Review the exact tracked files and the ZIP contents. Confirm there are no personal paths/data, broken download links, or unsupported compatibility claims.
-8. Create a release tagged `v<VERSION>` at the reviewed commit. Upload the versioned ZIP and `SHA256SUMS.txt`, not the unpacked workflow bundles. Use draft/prerelease status while user acceptance remains incomplete.
-9. Download the uploaded ZIP, verify `shasum -a 256 -c SHA256SUMS.txt`, and check that the source version and installed behavior match.
+8. Create a release tagged `v<VERSION>` at the reviewed commit. Upload the versioned ZIP and `SHA256SUMS.txt`, not the unpacked workflow bundles. Keep it a draft while preparing assets; publish as a **prerelease** when the tested core flow is ready and remaining compatibility checks are listed. A draft is not publicly downloadable.
+9. Download the uploaded ZIP without GitHub authentication, verify `shasum -a 256 -c SHA256SUMS.txt`, and check that the ZIP matches the reviewed source. Check the direct download link in both READMEs. Once public, treat the tag and assets as immutable; ship corrections under a new version.
 
 The automatic **Source code** assets are not the install package. CI artifacts are build outputs, not evidence that installation passed. A release does not need an automatic updater or a Homebrew formula.
+
+For 0.1.0, Safari → Excel is the accepted core flow. Fresh-account permissions, keyboard invocation, other receivers/browsers, and cross-version upgrades remain open compatibility checks, not claims of support. An independent first-use test and demo recording can follow the public preview. Do not mark either complete until the actual feedback or recording exists.
 
 ## Shortcuts distribution
 

@@ -15,6 +15,10 @@ Use [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/), for 
 
 Runtime dependencies should remain limited to macOS and the user's target apps. New integrations should have a concrete user need and a tested installation path.
 
+`docs/START-HERE.html` is the short, offline installation guide; `docs/START-HERE.md` is the detailed reference. Keep both languages in the same order: install, try from Services, then optionally set shortcuts. Keep compatibility claims in both READMEs aligned with `docs/VALIDATION.md`.
+
+For user-facing evidence, see the [first-use checklist](docs/FIRST-USE-CHECK.md) and [demo recording plan](docs/demo/DIRECTION.md).
+
 ## 中文
 
 反馈请附上系统、浏览器、接收软件和工具版本，说明运行了哪个操作。优先用 `https://example.com` 和空白文稿复现。

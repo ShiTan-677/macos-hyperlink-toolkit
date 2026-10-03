@@ -4,22 +4,22 @@
 
 把 Safari、Google Chrome 或 Microsoft Edge 的当前网页复制成带标题的链接。
 只需要富文本链接时，安装 **HLT - Copy Rich Link** 即可。
+**HLT = Hyperlink Toolkit（超链接工具箱）**，是服务名称的统一前缀；**Copy Rich Link** 的意思是“复制网页为标题链接”。
 
 安装包内的 **START-HERE.html** 可以双击，用浏览器阅读简明安装指南。
 
-> **安装后打开了系统设置？下一步展开“服务”列表里的【通用】。**
-> 在其中找到 **HLT - Copy Rich Link**，勾选它，双击右侧的“无”或已有快捷键，再按 **Option + Command + K（⌥⌘K）**。
-> 安装包不预设快捷键；暂不设置也能从应用的“服务”菜单使用。
+> **安装后打开了系统设置？可以先关闭，用下面的“服务”菜单步骤试一次。**
+> 快捷键是可选的。之后设置时，在“服务”列表里展开【通用】，找到 **HLT - Copy Rich Link**。安装包不预设快捷键。
 
 ### 安装
 
 1. 解压下载的 ZIP，打开 `workflows` 文件夹。
 2. 双击 `HLT - Copy Rich Link.workflow`，在系统提示中选择“安装”。
-3. 安装后如果打开了系统设置，可按上方提示设置快捷键，也可以先关闭设置，用下方的服务菜单测试。这个设置入口由 macOS 的工作流安装流程提供；不同系统版本的表现可能不同。若双击工作流直接打开 Automator 编辑器，关闭编辑器，使用下方“手动安装”；若打开“快捷指令”，先取消导入，使用“手动安装”。
+3. 安装后如果打开了系统设置，先关闭，用下方的服务菜单测试。这个设置入口由 macOS 的工作流安装流程提供；不同系统版本的表现可能不同。若双击工作流直接打开 Automator 编辑器，关闭编辑器，使用下方“手动安装”；若打开“快捷指令”，先取消导入，使用“手动安装”。
 4. 打开 Safari，访问 `https://example.com`。在屏幕顶部菜单栏选择 **Safari → 服务 → HLT - Copy Rich Link**。
 5. 保持浏览器在前台，等复制完成后再切换应用。启用了通知时，会显示“链接已复制”。首次出现自动化权限提示时，核对它请求控制的是当前浏览器，然后允许；授权后如果没有复制成功，再从服务菜单运行一次。
-6. 到 Excel 的空白单元格或 TextEdit 富文本新文稿中按 **Command + V**。预期显示可点击的 **Example Domain**。纯文本编辑器应显示 `https://example.com/`。
-7. 确认菜单运行正常后，再设置快捷键。
+6. 到 Excel 的空白单元格中按 **Command + V**。预期显示可点击的 **Example Domain**。这是当前经过真实验收的组合；TextEdit 等其他富文本软件仍待实测，纯文本软件的预期结果为 `https://example.com/`。
+7. 确认菜单运行正常后，可以选择设置快捷键；不设置也能继续用服务菜单。
 
 **手动安装（无需终端）：**Finder → 前往 → 前往文件夹，输入 `~/Library/Services`。
 若 `Services` 不存在，先前往 `~/Library`，新建名为 `Services` 的文件夹。
@@ -76,22 +76,22 @@
 
 Copy the current Safari, Google Chrome, or Microsoft Edge page as a titled hyperlink.
 For everyday use, install **HLT - Copy Rich Link** only.
+**HLT = Hyperlink Toolkit**, the shared prefix for these services. **Copy Rich Link** copies a webpage as a clickable title.
 
 Double-click **START-HERE.html** in the download to read a short setup guide in your browser.
 
-> **Did installation open System Settings? Expand General inside the Services list.**
-> Find **HLT - Copy Rich Link**, enable its checkbox, double-click “none” or the existing shortcut on the right, then press **Option + Command + K (⌥⌘K)**.
-> The package does not assign shortcuts. You can also use the app’s Services menu without setting one.
+> **Did installation open System Settings? Close it and try the Services menu below first.**
+> Shortcuts are optional. When ready, expand **General** inside the **Services** list and find **HLT - Copy Rich Link**. The package does not assign shortcuts.
 
 ### Install and try
 
 1. Extract the ZIP and open `workflows`.
 2. Double-click `HLT - Copy Rich Link.workflow` and choose **Install**.
-3. If installation opens System Settings, use the instructions above or close Settings and test from the Services menu first. This settings entry point belongs to macOS’s workflow installation flow; behavior may vary by version. If opening the workflow goes straight to the Automator editor or asks to import into Shortcuts, cancel and use the manual method below.
+3. If installation opens System Settings, close it and test from the Services menu first. This settings entry point belongs to macOS’s workflow installation flow; behavior may vary by version. If opening the workflow goes straight to the Automator editor or asks to import into Shortcuts, cancel and use the manual method below.
 4. In Safari, visit `https://example.com`. Choose **Safari → Services → HLT - Copy Rich Link** from the menu bar.
 5. Keep the browser in front until copying finishes, then switch apps. If notifications are enabled, a “Link copied” notification appears. Allow the expected Automation request to the current browser; run the service again if the first attempt only completed authorization.
-6. Paste with **Command + V** into an empty Excel cell or a new rich-text TextEdit document. Expect a clickable **Example Domain**. A plain-text editor should receive `https://example.com/`.
-7. After the menu action works, follow the shortcut setup below.
+6. Paste with **Command + V** into an empty Excel cell. Expect a clickable **Example Domain**. This is the combination tested interactively; other rich-text apps such as TextEdit still need testing. A plain-text editor is expected to receive `https://example.com/`.
+7. After the menu action works, optionally set a shortcut below. The Services menu remains available without one.
 
 **Manual installation:** In Finder, use **Go → Go to Folder**, enter `~/Library/Services`, and copy the desired `.workflow` files there. If needed, create `Services` inside `~/Library` first. Reopen the target app’s Services menu.
 
